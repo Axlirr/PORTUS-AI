@@ -1,0 +1,5 @@
+{
+  "name": "PORTUS AI – Conversational Trade Intelligence Agent",
+  "description": "A multi-modal conversational agent that empowers global port and logistics managers to make real-time, AI-driven coordination decisions during disruptions to global trade. It combines data retrieval, LLM-driven reasoning, and simulation tools to recommend actionable decisions.",
+  "requestFramePermissions": []
+}
