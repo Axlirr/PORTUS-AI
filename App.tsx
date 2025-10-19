@@ -14,19 +14,19 @@ function App() {
     const bgUrl = `url("data:image/svg+xml;base64,${btoa(svgBackground)}")`;
 
     return (
-        <div className="min-h-screen bg-slate-900 text-gray-100 flex flex-col p-4 font-sans bg-cover bg-center" style={{backgroundImage: bgUrl}}>
+        <div className="h-screen bg-slate-900 text-gray-100 flex flex-col p-4 font-sans bg-cover bg-center" style={{ backgroundImage: bgUrl }}>
             <header className="relative z-10 text-center mb-4">
                 <h1 className="text-3xl font-bold tracking-wider text-cyan-400">
                     <span className="font-light text-white">PORTUS AI</span>
                 </h1>
                 <p className="text-sm text-gray-400">Conversational Trade Intelligence Agent</p>
             </header>
-            
-            <main className="relative z-10 flex-1 flex gap-4 overflow-hidden">
-                <div className="w-1/2 flex flex-col h-[calc(100vh-80px)]">
+
+            <main className="relative z-10 flex-1 flex gap-4 min-h-0">
+                <div className="w-1/2 flex flex-col min-h-0">
                     <ChatInterface onAnalysisReceived={handleAnalysisReceived} />
                 </div>
-                <div className="w-1/2 flex flex-col h-[calc(100vh-80px)]">
+                <div className="w-1/2 flex flex-col min-h-0">
                     <AnalysisDisplay analysis={currentAnalysis} />
                 </div>
             </main>

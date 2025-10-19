@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import type { ChatMessage as ChatMessageType, AnalysisResult } from '../types';
 import ChatMessage from './ChatMessage';
 import { SendIcon, LoadingSpinner } from './IconComponents';
-import { getTradeAnalysis } from '../services/geminiService';
+import { getTradeAnalysis } from '../services/openaiService';
 
 interface ChatInterfaceProps {
-    onAnalysisReceived: (analysis: AnalysisResult) => void;
+  onAnalysisReceived: (analysis: AnalysisResult) => void;
 }
 
 const ChatInterface: React.FC<ChatInterfaceProps> = ({ onAnalysisReceived }) => {
@@ -35,7 +35,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ onAnalysisReceived }) => 
 
     try {
       const analysisResult = await getTradeAnalysis(userMessage.text);
-      
+
       const aiMessage: ChatMessageType = {
         id: (Date.now() + 1).toString(),
         sender: 'ai',
@@ -58,8 +58,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ onAnalysisReceived }) => 
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-gray-800/60 rounded-2xl border border-gray-700 backdrop-blur-sm">
-      <div className="flex-1 p-6 space-y-6 overflow-y-auto">
+    <div className="h-full flex flex-col bg-gray-800/60 rounded-2xl border border-gray-700 backdrop-blur-sm">
+      <div className="flex-1 p-6 space-y-6 overflow-y-auto scrollbar-hide">
         {messages.map((msg) => (
           <ChatMessage key={msg.id} message={msg} />
         ))}
@@ -67,7 +67,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ onAnalysisReceived }) => 
           <div className="flex items-start gap-4 justify-start">
             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center"><LoadingSpinner /></div>
             <div className="max-w-xl p-4 rounded-2xl bg-gray-700 text-gray-200 rounded-bl-none">
-                <p className="text-sm italic text-gray-400">Analyzing...</p>
+              <p className="text-sm italic text-gray-400">Analyzing...</p>
             </div>
           </div>
         )}
@@ -88,7 +88,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ onAnalysisReceived }) => 
             className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-800 disabled:cursor-not-allowed text-white rounded-lg p-2 transition-colors duration-200 flex items-center justify-center w-10 h-10"
             disabled={isLoading || !input.trim()}
           >
-             <SendIcon />
+            <SendIcon />
           </button>
         </form>
       </div>

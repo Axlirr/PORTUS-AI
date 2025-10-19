@@ -43,6 +43,18 @@ export interface AnalysisResult {
   recommendations: Recommendation[];
   sources: string[];
   explain: string;
+  trace?: ReActTraceStep[];
+}
+
+export type ReActTraceStepType = 'thinking' | 'action' | 'observation' | 'final';
+
+export interface ReActTraceStep {
+  type: ReActTraceStepType;
+  message?: string;
+  actionName?: string;
+  arguments?: Record<string, unknown>;
+  requires_approval?: boolean;
+  observation?: string;
 }
 
 export interface ChatMessage {
